@@ -1,13 +1,25 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
-import Chat from './components/containers/Chat';
+import React from "react";
+import "./App.css";
+import Chat from "./containers/Chat";
+import Header from "./components/layout/Header";
+import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
+import Login from "./containers/Login";
+import ErrorPage from "./components/utils/ErrorPage";
 
 function App() {
   return (
-    <div className="App">
-      <Chat />
-    </div>
+    <Router>
+      <div className="App">
+        <Header />
+
+        <Switch>
+          <Route path="/login" component={Login} />
+          <Route path="/chat" component={Chat} />
+          <Route path="/*" component={ErrorPage} />
+        </Switch>
+
+      </div>
+    </Router>
   );
 }
 

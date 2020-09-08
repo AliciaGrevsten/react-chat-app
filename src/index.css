@@ -1,0 +1,21 @@
+.chatwindow {
+    height: 500px;
+    width: 600px;
+    background-color: rgb(255, 255, 255);
+    border: 1px solid rgb(218, 217, 217);
+    margin-bottom: 2%;
+}
+
+.header {
+    background-color: rgb(44, 113, 177);
+    color: white;
+    text-align: center;
+    padding: 2%;
+    margin-bottom: 5%;
+}
+
+.userlist {
+    border: 1px solid rgb(224, 224, 224);
+    height: 100%;
+    padding: 5%;
+}
