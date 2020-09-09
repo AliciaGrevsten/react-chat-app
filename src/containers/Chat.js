@@ -1,19 +1,25 @@
-import React from 'react';
-import ChatInput from '../ChatInput';
-import ChatWindow from '../ChatWindow';
-import UserList from '../UserList';
+import React, { useState } from 'react';
+import ChatInput from '../components/ChatInput';
+import ChatWindow from '../components/ChatWindow';
+import UserList from '../components/UserList';
 
 const Chat = () => {
+
+    const [ selectedUser, setSelectedUser] = useState({});
+
+    const openChat = (username, id) => {
+        setSelectedUser({username, id});
+    }
 
     return (
         <div className="container-fluid">
             <div className="row">
             <div className="col-4 float-left">
-                <UserList />
+                <UserList onUserSelected={ openChat } />
             </div>
             <div className="col-8 float-left">
                 <div className="row">
-                    <ChatWindow />
+                    <ChatWindow user={ selectedUser } />
                 </div>
                 <div className="row">
                     <ChatInput />

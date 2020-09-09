@@ -1,40 +1,61 @@
-import React from "react";
+import React, { useState } from 'react';
+import { loginUser } from '../api/user.api';
 
-const LoginForm = () => {
+const LoginForm = props => {
+
+  const [username, setUsername] = useState('');
+  const [password, setPassword] = useState('');
+  const [isLoading, setIsLoading] = useState(false);
+  const [loginError, setLoginError] = useState('');
+
+  const onLoginClick = async () => {
+    setIsLoading(true);
+    setLoginError('');
+    let result;
+
+    try {
+      result = await loginUser(username, password);
+    } catch (e) {
+
+    } finally {
+      setIsLoading(false);
+      props.onLoginClick(result.data);
+    }
+
+  }
+
+  const onUsernameChange = (ev) => setUsername(ev.target.value.trim());
+  const onPasswordChange = (ev) => setPassword(ev.target.value.trim());
+
   return (
     <div>
       <form>
-        <div class="form-group">
-          <label for="exampleInputEmail1">Email address</label>
+        <div className="form-group">
+          <label htmlFor="usernameInput">Username</label>
           <input
-            type="email"
-            class="form-control"
-            id="exampleInputEmail1"
-            aria-describedby="emailHelp"
-            placeholder="Enter email"
+            type="text"
+            className="form-control"
+            id="usernameInput"
+            placeholder="Enter username"
+            onChange={onUsernameChange}
           />
-          <small id="emailHelp" class="form-text text-muted">
-            We'll never share your email with anyone else.
-          </small>
         </div>
-        <div class="form-group">
-          <label for="exampleInputPassword1">Password</label>
+        <div className="form-group">
+          <label htmlFor="passwordInput">Password</label>
           <input
             type="password"
-            class="form-control"
-            id="exampleInputPassword1"
+            className="form-control"
+            id="passwordInput"
             placeholder="Password"
+            onChange={onPasswordChange}
           />
         </div>
-        <div class="form-group form-check">
-          <input type="checkbox" class="form-check-input" id="exampleCheck1" />
-          <label class="form-check-label" for="exampleCheck1">
-            Check me out
-          </label>
-        </div>
-        <button type="submit" class="btn btn-primary">
-          Submit
+        <button type="button" onClick= { onLoginClick } className="btn btn-primary">
+          Login
         </button>
+
+        { isLoading && <p>Logging in..</p> }
+        { loginError && <p>{ loginError }</p> }
       </form>
     </div>
   );

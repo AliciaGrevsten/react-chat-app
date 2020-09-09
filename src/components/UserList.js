@@ -1,12 +1,46 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
+import User from './User';
+import { fetchUsers } from '../api/user.api';
 
 
-const UserList = () => {
+const UserList = props => {
+
+    const [ users, setUsers ] = useState([]);
+    const [ isLoaded, setIsLoaded] = useState(false);
+
+    useEffect(() => {
+        loadUsers();
+    }, []);
+
+    const onUserSelected = (username, id) => {
+        props.onUserSelected(username, id);
+    }
+
+    const loadUsers  = async () => {
+        let result;
+
+        try {
+            result = await fetchUsers();
+            setUsers([...result.data]);
+            setIsLoaded(true);
+        } catch (e) {
+
+        } finally {
+
+        }
+    }
 
     return (
         <div className="userlist">
             <div>
-                <h5>Logged in users</h5>
+                <h5>Users</h5>
+                <br></br>
+                {
+                    isLoaded && 
+                    users.map(user =>
+                        <User user={user} key={user.id} userClicked={ onUserSelected } />
+                    )
+                }
             </div>
         </div>
     );

@@ -19,3 +19,15 @@
     height: 100%;
     padding: 5%;
 }
+
+#userpic {
+    height: 20px;
+    border-radius: 50%;
+    float: left;
+    margin-right: 5px;
+}
+
+strong {
+    color: rgb(44, 113, 177);
+    text-transform: uppercase;
+}

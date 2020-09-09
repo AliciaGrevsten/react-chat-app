@@ -1,10 +1,11 @@
 import React from "react";
 import "./App.css";
 import Chat from "./containers/Chat";
-import Header from "./components/layout/Header";
+import Header from "./layout/Header";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import Login from "./containers/Login";
-import ErrorPage from "./components/utils/ErrorPage";
+import Register from "./containers/Register";
+import ErrorPage from "./containers/ErrorPage";
 
 function App() {
   return (
@@ -14,6 +15,7 @@ function App() {
 
         <Switch>
           <Route path="/login" component={Login} />
+          <Route path="/register" component={Register} />
           <Route path="/chat" component={Chat} />
           <Route path="/*" component={ErrorPage} />
         </Switch>
