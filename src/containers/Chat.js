@@ -5,21 +5,15 @@ import UserList from '../components/UserList';
 
 const Chat = () => {
 
-    const [ selectedUser, setSelectedUser] = useState({});
-
-    const openChat = (username, id) => {
-        setSelectedUser({username, id});
-    }
-
     return (
         <div className="container-fluid">
             <div className="row">
             <div className="col-4 float-left">
-                <UserList onUserSelected={ openChat } />
+                <UserList />
             </div>
             <div className="col-8 float-left">
                 <div className="row">
-                    <ChatWindow user={ selectedUser } />
+                    <ChatWindow />
                 </div>
                 <div className="row">
                     <ChatInput />

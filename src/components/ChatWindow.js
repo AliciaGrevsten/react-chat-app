@@ -1,10 +1,10 @@
 import React from 'react';
 
-const ChatWindow = props => {
+const ChatWindow = () => {
 
     return (
         <div>
-            <h5> Chat with <strong>{ props.user.username }</strong> </h5>
+            <h5> Start chatting away! </h5>
             <div className="chatwindow">
 
             </div>

@@ -14,6 +14,7 @@ function App() {
         <Header />
 
         <Switch>
+          <Route path="/" component={Login} />
           <Route path="/login" component={Login} />
           <Route path="/register" component={Register} />
           <Route path="/chat" component={Chat} />

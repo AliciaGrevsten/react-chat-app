@@ -12,10 +12,6 @@ const UserList = props => {
         loadUsers();
     }, []);
 
-    const onUserSelected = (username, id) => {
-        props.onUserSelected(username, id);
-    }
-
     const loadUsers  = async () => {
         let result;
 
@@ -38,7 +34,7 @@ const UserList = props => {
                 {
                     isLoaded && 
                     users.map(user =>
-                        <User user={user} key={user.id} userClicked={ onUserSelected } />
+                        <User user={user} key={user.id} />
                     )
                 }
             </div>
