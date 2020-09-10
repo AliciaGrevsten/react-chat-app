@@ -12,6 +12,7 @@ const RegisterForm = (props) => {
 
     setIsLoading(true);
 
+    
     let result;
 
     try {

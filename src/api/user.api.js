@@ -17,11 +17,10 @@ export const registerUser = (username, password) => {
     return fetch(
         API_REGISTER_URL, 
         createFetchOptions('POST', {
-            user: { 
                 username, 
                 password 
             }
-        })
+        )
     ).then(r => r.json())
     .then(res => {
         if (res.status >= 400) {
@@ -35,11 +34,10 @@ export const loginUser = (username, password) => {
     return fetch(
         API_LOGIN_URL, 
         createFetchOptions('POST', {
-            user: { 
                 username, 
                 password 
             }
-        })
+        )
     ).then(r => r.json())
     .then(handleResponse);
 }

@@ -16,7 +16,7 @@ const LoginForm = props => {
     try {
       result = await loginUser(username, password);
     } catch (e) {
-
+      setLoginError(result.message);
     } finally {
       setIsLoading(false);
       props.onLoginClick(result.data);
